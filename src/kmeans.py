@@ -7,14 +7,15 @@ import numpy as np
 import json
 from scipy.spatial.distance import cosine
 
-def read_text_emoji(model):
+def read_text_emoji(model, cross_lingual):
     f = open("/Users/yoshinarifujinuma/work/emoji2vec/data/training/train.txt")
     emoji2vec = {}
     for line in f:
         description, emoji, boolean = line.strip().split("\t")
         total = np.zeros(100)
         for word in description.split():
-            word = "eng:" + word
+            if cross_lingual:
+                word = "eng:" + word
             if word in model.vocab:
                 total += model[word]
         emoji2vec[emoji] = total/len(description.split())
@@ -47,11 +48,20 @@ def compute_node_sims(centroid_vecs):
  
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--w2v", type=str, help="", required=True)
+    parser.add_argument("--out", type=str, help="", required=True)
+    parser.add_argument("--num_cluster", type=int, help="", default=40)
+    parser.add_argument("--cross_lingual", action="store_true", help="", default=False)
+    args = parser.parse_args()
+    
+
     json_dic = {}
     json_dic["nodes"] = []
     json_dic["links"] = []
-    NUM_CLUSTERS=40
-    model = gensim.models.KeyedVectors.load_word2vec_format("/Users/yoshinarifujinuma/work/label_prop/bootstrap_cooccurrences/data/word_vectors/cross-lingual/vecmap/eng_news_2015_1M_100.txt.normalized.txt.jp-en.mapped.txt_jpn_news_2005-2008_1M_100.txt.normalized.txt.jp-en.mapped.txt.cabinet_fitted.txt", binary=False)
+    NUM_CLUSTERS=args.num_cluster
+    model = gensim.models.KeyedVectors.load_word2vec_format(args.w2v, binary=False)
     X = model[model.wv.vocab]
     kmeans = KMeans(n_clusters=NUM_CLUSTERS, random_state=2)
     kmeans = kmeans.fit(X)
@@ -61,25 +71,25 @@ if __name__ == "__main__":
     print(labels)
     print(C)
     labels = kmeans.predict(X)
-    stock = model["eng:stock"]
-    jp_closing_price = model["jpn:終値"]
-    en_salary = model["eng:salary"]
-    jp_salary = model["jpn:給与"]
-    jp_rise = model["jpn:続伸"]
-    en_disaster = model["eng:disaster"]
-    jp_disaster = model["jpn:災害"]
-    en_policy = model["eng:policy"]
-    jp_policy = model["jpn:政策"]
-    en_cabinet = model["eng:cabinet"]
-    jp_cabinet = model["jpn:組閣"]
-    print(kmeans.predict(np.array([stock, jp_closing_price, en_salary, jp_salary, jp_rise, jp_disaster, en_disaster, en_policy, jp_policy, en_cabinet, jp_cabinet])))
+    #stock = model["eng:stock"]
+    #jp_closing_price = model["jpn:終値"]
+    #en_salary = model["eng:salary"]
+    #jp_salary = model["jpn:給与"]
+    #jp_rise = model["jpn:続伸"]
+    #en_disaster = model["eng:disaster"]
+    #jp_disaster = model["jpn:災害"]
+    #en_policy = model["eng:policy"]
+    #jp_policy = model["jpn:政策"]
+    #en_cabinet = model["eng:cabinet"]
+    #jp_cabinet = model["jpn:組閣"]
+    #print(kmeans.predict(np.array([stock, jp_closing_price, en_salary, jp_salary, jp_rise, jp_disaster, en_disaster, en_policy, jp_policy, en_cabinet, jp_cabinet])))
 
     node_num = 0
     centroid_nodes = []
 
     centroid_links = compute_node_sims(C)
 
-    emoji2vec = read_text_emoji(model)
+    emoji2vec = read_text_emoji(model, args.cross_lingual)
 
     for i, centroid in enumerate(C):
         sim = -1
@@ -112,6 +122,6 @@ if __name__ == "__main__":
 
     # adding links between clusters
 
-    outfile = open("kmean_clustered.json", "w")
+    outfile = open(args.out, "w")
     json.dump(json_dic, outfile)
 

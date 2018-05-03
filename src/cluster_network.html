@@ -37,6 +37,10 @@ circle.text {
   </head>
   <body>
 
+    <div id="partOne">
+        <h1>Clustered Visualizaiton of Word Embeddings using Emojis</h1>
+    </div>
+   
 
   <input id="targetNode" name="targetNode" type="text" /> 
   <button onclick="growNode()">grow node</button>
@@ -193,7 +197,9 @@ var vis = body.append("svg")
    .attr("height", height);
 
 //d3.json("miserables.json", function(json) {
-d3.json("kmean_clustered.json", function(json) {
+//d3.json("kmean_clustered.json", function(json) {
+//d3.json("kmean_clustered_en.json", function(json) {
+d3.json("kmean_clustered_en_50.json", function(json) {
   data = json;
   for (var i=0; i<data.links.length; ++i) {
     o = data.links[i];
@@ -303,14 +309,14 @@ function init() {
         .attr("text-anchor", "middle")
         .attr("x", function(d) { return d.x; })
         .attr("y",  function(d) { return d.y; })
-        .attr("font-size", function(d) { return d.size ? "20px" : "12px" })
+        .attr("font-size", function(d) { return d.size ? "24px" : "12px" })
         .text(function(d) { return d.size ? d.name : d.name })
         .on("mouseover", function(d) {
           d3.select(this).style("fill", "red").attr("font-size","24px");
         })                  
         .on("mouseout", function(d) {
           d3.select(this).style("fill", "black")
-            .attr("font-size", function(d) { return d.size ? "20px" : "12px" });
+            .attr("font-size", function(d) { return d.size ? "24px" : "12px" });
         });
 
   node.call(force.drag)
