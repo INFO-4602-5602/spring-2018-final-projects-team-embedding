@@ -1,1 +1,4 @@
-python3 kmeans.py --w2v /Users/yoshinarifujinuma/work/label_prop/bootstrap_cooccurrences/data/word_vectors/cross-lingual/vecmap/eng_news_2015_1M_100.txt.normalized.txt.jp-en.mapped.txt_jpn_news_2005-2008_1M_100.txt.normalized.txt.jp-en.mapped.txt.cabinet_fitted.txt --out kmean_clustered.json --cross_lingual
+python3 kmeans.py \
+    --w2v eng_news_2015_1M_100.txt.normalized.txt.jp-en.mapped.txt_jpn_news_2005-2008_1M_100.txt.normalized.txt.jp-en.mapped.txt \
+    --out kmean_clustered.json \
+    --cross_lingual
