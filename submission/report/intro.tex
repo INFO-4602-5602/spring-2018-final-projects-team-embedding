@@ -12,7 +12,7 @@ For example, there are potential problems of naively displaying the word embeddi
 \end{itemize*}
 Figure~\ref{fig:graph} shows an example of $k$-nearest neighbor graph and Figure~\ref{fig:t_sne} shows an example of visualization using t-SNE. \\
 
-Also, many researchers decided to visualize embeddings in the 3D space, like Tensorboard \cite{tensorboard_viz}, but it ends up looking like a large cluttered collection of points. A visualization like that is just useful if the goal is to just play around with the click-and-drag interaction, but in the end, there is no semantic information being conveyed. \\
+Also, many researchers decided to visualize embeddings in the 3D space, like Tensorboard (Figure~\ref{fig:tensorboard}) \cite{tensorboard_viz}, but it ends up looking like a large cluttered collection of points. A visualization like that is just useful if the goal is to just play around with the click-and-drag interaction, but in the end, there is no semantic information being conveyed. \\
 
 The ultimate goal of any good visualization is to convey the user about everything the data represents, and not what the data is like. Therefore, we think that semantics is a crucial aspect of any good visualization. So when we decided to carry on this project, the key question we asked ourselves was - How can we represent word embeddings efficiently in a 2D design space by keeping the clutter on the design space as minimum as possible? \\
 
@@ -22,3 +22,13 @@ Therefore using this motivation, we carry forward this project, and accomplished
  \item Kept the clutter minimized by having an efficient k-means clustering algorithm implemented on the cosine similarities of these word vectors.
  \item Convey the semantic information of every single cluster by annotating them with Emojis, because of their excellent way of conveying semantic information with just a single character.
 \end{itemize*}
+
+\begin{figure}[htb]
+ \centering
+     {\includegraphics[width=0.78\linewidth]{figures/tensorboard.png}}
+    \vspace{-1ex}
+     \caption{The visualizaiton of word embeddings using Tensorboard.}
+\label{fig:tensorboard}
+\end{figure}
+
+
