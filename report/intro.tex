@@ -1,0 +1,17 @@
+%% \section{Introduction} %for journal use above \firstsection{..} instead
+Word embeddings, especially cross-lingual embeddings, has been successful in multiple NLP applications such as machine translation \cite{lample2018unsupervised, artetxe2018unsupervised} and cross-lingual document classification \cite{klementiev-titov-bhattarai:2012:PAPERS}. 
+One way of exploring such embeddings is to enable interaction between humans and visualizations. 
+However, there are potential problems of naively displaying the word embeddings projected onto 2D space using t-SNE \cite{t-sne}, which is mot commonly used in visualizing word embeddings, such as;
+\begin{itemize*}
+  \item Overlap of words when zoomed out. 
+  \item A counter-intuitive features of a t-SNE visualization (e.g., ``cluster sizes mean nothing''\footnote{https://distill.pub/2016/misread-tsne/}) 
+  \item There are many other alternatives to visualize word embeddings than commonly used t-SNE (e.g., UMAP \cite{umap} or $k$-Nearest Neighbor graph), but no thorough comparison conducted. 
+ %\item Which is the better way to display word embeddings to humans: k-nearest neighbor graph or t-SNE-based visualization? Does a counter-intuitive visualization using t-SNE \cite{t-sne} (e.g., ``cluster sizes mean nothing''\footnote{https://distill.pub/2016/misread-tsne/}) affect the interaction with humans? 
+\end{itemize*}
+Figure~\ref{fig:graph} shows an example of $k$-nearest neighbor graph and Figure~\ref{fig:t_sne} shows an example of visualization using t-SNE. 
+
+In this project, we would like to accomplish the followings:
+\begin{itemize*}
+ \item Visualize the change of word vectors while training skip-gram with negative sampling (SGNS) model \cite{NIPS2013_5021} using t-SNE.
+ \item Compare visualizations of word vectors between t-SNE, UMAP, $k$-nearest neighbor graph, or any other methods (any suggestions are welcome).
+\end{itemize*}

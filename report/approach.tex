@@ -1,0 +1,15 @@
+\section{Description of the Project}
+Our approach for constructing the visualization is as follows:
+\begin{enumerate}
+ \item Train a word embedding
+ \item Run k-means and obtain clusters
+ \item Assign an emoji to each cluster
+ \item Visualize using D3
+\end{enumerate}
+
+\subsection{Annotation of Clusters with Emojis}
+When a human look at emoji, one connects with various possible concepts. 
+Searching for a right word to represent the cluster requires external linguistic resources e.g., WordNet. 
+However, images does not associate a single word. 
+For example, when one looks at 🍅, the possible association of this words are ``tomato'', ``vegatable'', ``food'', or even ``object''. 
+Therefore, we decide to use emojis to represent the clusters. 
