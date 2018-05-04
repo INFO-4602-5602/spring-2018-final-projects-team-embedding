@@ -1,5 +1,7 @@
 \section{Description of the Project}
-Figure~\ref{fig:cluster_network} shows the output of our visualization. 
+Our goal for this project is to visualize word embeddings by avoiding the clutters caused by too many data points. 
+Our core idea for the approach is to cluster the data points and annotate with something that correctly summerizes the cluster. 
+Figure~\ref{fig:cluster_network} shows the example output of our visualization. 
 
 \begin{figure}[htb]
  \centering
@@ -9,14 +11,22 @@ Figure~\ref{fig:cluster_network} shows the output of our visualization.
 \label{fig:cluster_network}
 \end{figure}
 
+\begin{figure}[htb]
+ \centering
+     {\includegraphics[width=0.68\linewidth]{figures/clustered_network_opened.png}}
+    \vspace{-1ex}
+     \caption{The visualizaiton of word embeddings using clustered network and emojis.}
+\label{fig:cluster_network_opened}
+\end{figure}
 
 Our approach for constructing the visualization is as follows:
 \begin{enumerate}
- \item Train a word embedding
- \item Run k-means and obtain clusters
+ \item Train a word embedding using a raw corpus. 
+ \item Run $k$-means \cite{lloyd1982least} and obtain clusters
  \item Assign an emoji to each cluster
  \item Visualize using D3.js
 \end{enumerate}
+For the number of clusters $k$, we empirically set $k = \{40, 50\}$.
 
 \subsection{Annotation of Clusters with Emojis}
 When a human look at emoji, one connects with various possible concepts. 
@@ -24,6 +34,9 @@ Searching for a right word to represent the cluster requires external linguistic
 However, images does not associate a single word. 
 For example, when one looks at 🍅, the possible association of this words are ``tomato'', ``vegatable'', ``food'', or even ``object''. 
 Therefore, we decide to use emojis to represent the clusters. 
+
+Another motivation of using emojis instead of words is the ``Picture superiority effect'' (e.g., \cite{doi:10.1162/jocn.2010.21464}) i.e., humans are better remembering pictures than words. 
+Assuming that the annotation of clusters is the most cruicial component of this visualization, we use emojis to represent the clusters.  
 
 
 \subsection{Interaction}
