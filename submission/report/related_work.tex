@@ -1,7 +1,8 @@
 \section{Related Work}
-The most common way of word embeddings is conduct dimensitionality reuduction and project onto 2D space using t-SNE \cite{t-sne}. 
-However, the problem of using solely t-SNE to visualize word embedding is that when the number of data points become large, the visualization gets largely clusttered as shown in Figure~\ref{fig:t_sne}. 
-Furthermore, t-SNE is known to have a counter-intuitive feature such as ``cluster sizes mean nothing''\footnote{https://distill.pub/2016/misread-tsne/}).
+The most widely-used way of visualizing word embeddings is conduct dimensitionality reuduction and project onto 2D space using t-SNE \cite{t-sne}. 
+However, the problem of using solely t-SNE to visualize word embedding is that when the number of data points become large, the visualization gets largely cluttered as shown in Figure~\ref{fig:t_sne}. 
+Furthermore, t-SNE is known to have a counter-intuitive feature such as ``cluster sizes mean nothing''\footnote{https://distill.pub/2016/misread-tsne/}). 
+One solution to avoid the visual cluttering is to enable user interaction and move around the words. 
 
 One notable work on adding interaction on top of dimensionality reduction methods to avoid the visualization cluttering is Tensorboard (Figure~\ref{fig:tensorboard}) \cite{tensorboard_viz}. 
 Tensorboard has multiple user-friendly features to enable exploratory analysis on word embeddings by (1) searching for words, and (2) clickabble and draggable 3D space. 
