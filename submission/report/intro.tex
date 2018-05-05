@@ -1,12 +1,12 @@
 %% \section{Introduction} %for journal use above \firstsection{..} instead
-Word embeddings, especially cross-lingual embeddings, has been successful in multiple NLP applications such as machine translation \cite{lample2018unsupervised, artetxe2018unsupervised} and cross-lingual document classification \cite{klementiev-titov-bhattarai:2012:PAPERS}. 
-But one area where there has not been very specific research is discovering the meanings of the embeddings themselves. \\
+Word embeddings \cite{NIPS2013_5021} has been successful in multiple NLP applications such as machine translation \cite{lample2018unsupervised, artetxe2018unsupervised} and cross-lingual document classification \cite{klementiev-titov-bhattarai:2012:PAPERS}. 
+The core idea of word embeddings is that assuming a distributional hypothesis \cite{harris54} i.e., words that have similar context has similar meanings, it maps each word into a vector with dimensions typically ranging from $50$ to $300$. 
+But one area where there has not been very specific research is directly extracting useful information from the embeddings themselves. 
 
-One way to efficiently convey this semantic information about embeddings is to enable an efficient interaction between humans and the visualizations of these embeddings. However, there have been a lot of problems in the current visualizations of these embeddings.
-For example, there are potential problems of naively displaying the word embeddings projected onto 2D space using t-SNE \cite{t-sne}, which is not commonly used in visualizing word embeddings, such as;
+One way to efficiently convey this semantic information about embeddings is to enable an interaction between humans and the visualizations of these embeddings. However, there are problems of visualizing embeddings such as
 \begin{itemize*}
-  \item Overlap of words when zoomed out (Figure~\ref{fig:t_sne}). 
-  \item A counter-intuitive features of a t-SNE visualization (e.g., ``cluster sizes mean nothing''\footnote{https://distill.pub/2016/misread-tsne/}) 
+  \item Overlap of words when there are lots of data points (Figure~\ref{fig:t_sne}). 
+  \item It takes time for users to understand and analyze embedding space solely from words and its gemometric arrangements. 
   %\item There are many other alternatives to visualize word embeddings than commonly used t-SNE (e.g., UMAP \cite{umap} or $k$-Nearest Neighbor graph), but no thorough comparison conducted. 
  %\item Which is the better way to display word embeddings to humans: k-nearest neighbor graph or t-SNE-based visualization? Does a counter-intuitive visualization using t-SNE \cite{t-sne} (e.g., ``cluster sizes mean nothing''\footnote{https://distill.pub/2016/misread-tsne/}) affect the interaction with humans? 
 \end{itemize*}
@@ -30,10 +30,9 @@ For example, there are potential problems of naively displaying the word embeddi
 \end{figure}
 
 
+%Also, many researchers decided to visualize embeddings in the 3D space, like Tensorboard (Figure~\ref{fig:tensorboard}) \cite{tensorboard_viz}, but it ends up looking like a large cluttered collection of points. A visualization like that is just useful if the goal is to just play around with the click-and-drag interaction, but in the end, there is no semantic information being conveyed. \\
 
-Also, many researchers decided to visualize embeddings in the 3D space, like Tensorboard (Figure~\ref{fig:tensorboard}) \cite{tensorboard_viz}, but it ends up looking like a large cluttered collection of points. A visualization like that is just useful if the goal is to just play around with the click-and-drag interaction, but in the end, there is no semantic information being conveyed. \\
-
-The ultimate goal of any good visualization is to convey the user about everything the data represents, and not what the data is like. Therefore, we think that semantics is a crucial aspect of any good visualization. So when we decided to carry on this project, the key question we asked ourselves was - How can we represent word embeddings efficiently in a 2D design space by keeping the clutter on the design space as minimum as possible? \\
+The ultimate goal of any good visualization is to convey the user about everything the data represents, and not what the data is like. Therefore, we think that semantics is a crucial aspect of any good visualization. So when we decided to carry on this project, the key question we asked ourselves was - How can we represent word embeddings interactively in a 2D design space by keeping the clutter on the design space as minimum as possible? 
 
 Therefore using this motivation, we carry forward this project, and accomplished the following:
 \begin{itemize*}

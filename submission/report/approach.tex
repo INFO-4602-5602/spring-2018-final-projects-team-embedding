@@ -22,21 +22,22 @@ Figure~\ref{fig:cluster_network} shows the example output of our visualization.
 Our approach for constructing the visualization is as follows:
 \begin{enumerate}
  \item Train a word embedding using a raw corpus. 
- \item Run $k$-means \cite{lloyd1982least} and obtain clusters
+ \item Run $k$-means \cite{lloyd1982least} on the word embedding space and obtain clusters
  \item Assign an emoji to each cluster
  \item Visualize using D3.js
 \end{enumerate}
-For the number of clusters $k$, we empirically set $k = \{40, 50\}$.
+For the number of clusters $k$, we empirically set $k = \{40, 50\}$. 
+We only show the top 10 nearest neighboring words to the centroid to avoid the visualization clutter. This issue is further discussed in Section~\ref{sec:discussion}.
 
 \subsection{Annotation of Clusters with Emojis}
 Searching for a right word to represent the cluster requires external linguistic resources e.g., WordNet and a sophisticated method e.g., hypernym prediction. 
-However, humans associate multiple words to a given image.  
+However, humans are good at associating multiple words and capture the abstract meaning form a picture.  
 %When a human look at emoji, one connects with various possible concepts. 
-For example, when one looks at 🍅, the possible association of this words are ``tomato'', ``vegetable'', ``food'', or even ``object''. 
+For example, when one looks at the tomato emoji (🍅), the possible association of this words are ``tomato'', ``vegetable'', ``food'', or even ``object''. 
 Therefore, we decide to use emojis to represent the clusters. 
 
 Another motivation of using emojis instead of words is the ``Picture superiority effect'' (e.g., \cite{doi:10.1162/jocn.2010.21464}) i.e., humans are better remembering pictures than words. 
-Assuming that the annotation of clusters is the most crucial component of this visualization, we use emojis to represent the clusters.  
+Assuming that the annotation of clusters is the most crucial component to summarize word embeddings, we use emojis to represent the clusters.  
 
 To assign an optimal emoji $e_c$ to each cluster $c$ with centroid vector $v_c$, assume we have a set of emoji and its text description $t$. 
 We compute the mean word vector $v_t$ of each word $w_i$ in a given emoji description $t = \{w_1, w_2, ..., w_n\}$ with length $n$ out of all set of emoji descriptions $T$, i.e.,
