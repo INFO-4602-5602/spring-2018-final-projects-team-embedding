@@ -1,2 +1,2 @@
 # README
-* `template.pdf` contains the final write-up.
+* `final_report.pdf` contains the final write-up.
