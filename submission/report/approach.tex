@@ -24,7 +24,7 @@ Our approach for constructing the visualization is as follows:
  \item Train a word embedding using a raw corpus. 
  \item Run $k$-means \cite{lloyd1982least} on the word embedding space and obtain clusters
  \item Assign an emoji to each cluster
- \item Visualize using D3.js
+ \item Visualize the clusters using D3.js \cite{Bostock:2011:DDD:2068462.2068631}
 \end{enumerate}
 For the number of clusters $k$, we empirically set $k = \{40, 50\}$. 
 We only show the top 10 nearest neighboring words to the centroid to avoid the visualization clutter. This issue is further discussed in Section~\ref{sec:discussion}.
@@ -57,6 +57,7 @@ Emojis are obtained from dataset built by \cite{eisner-EtAl:2016:SocialNLP}.
 To let the users dive deeper into further details of clusters, users can click on emojis to ``drill-down'' \cite{Elmqvist:2010:HAI:1749404.1749525} the cluster and look into the nearest neighboring words in terms of the centroid in the cluster.
 However, even when we collapse words into each cluster, there are still overlapping words as shown in Figure~\ref{fig:cluster_network_opened}. 
 To solve this issue, we further made each cluster draggable and used forced layout to let users resolve the overlapping words. 
+The core part of the D3.js code is referred from \url{http://bl.ocks.org/GerHobbelt/3071239}.
 
 %\subsection{Force Layout}
 %To solve the problem of overlapping texts, we also use force layout in D3.js to let the texts and emojis move and draggable. 
