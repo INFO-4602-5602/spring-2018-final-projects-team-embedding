@@ -7,10 +7,10 @@ One of the successful cases of our visualization is a cluster with the spacecraf
 On the other hand, some emojis (e.g., Leo emoji) are harder to interpret what does a cluster mean. 
 Furthermore, one emoji could have multiple descriptions (e.g., the descriptions for the leo emoji are ``greek'', ``sign'', ``zodiac'', ``stars'', ``constellation'', ``astrology'', ``lion'') which further requires sophisticated processing when we want to improve the quality of the visualization. 
 
-\paragraph{Emojis are diverse} 
+\paragraph{\bf Emojis are diverse} 
 Sometimes it just amazes us with how many emojis have been introduced over the years. We are not just talking about skin color emojis, but also things like country flags, food items, plants, animals, etc. This number is still keeping on increasing. So when we have so many emojis trying to represent the same kind of thing, what emoji should be used to annotate the cluster of the words inside it. For example, if all the country names are clustered together, what country flag emoji do we use to annotate it? Another example is about places in Europe, so we need something representing Europe to annotate that particular cluster. One emoji that we can think of is the European castle emoji. But currently the algorithm tries to annotate it with the Japanese castle emoji. This is a pretty interesting topic to think about, but for now we are leaving it for future work.
 
-\paragraph{Outliers are painful, but can't be ignored} 
+\paragraph{\bf Outliers are painful, but can't be ignored} 
 Outliers occur in almost every data visualization task, so there is a chance of a cluster accomodating the outlier. So as a result, the emoji that captures the semantics of the cluster, cannot capture the outlier because they might be totally unrelated. But on the other hand, we cannot also ignore them because we still need to represent the data in its entirety. But since this is a very active debate, we leave the topic of visualization of outlier word embeddings as a future work. 
 
 \paragraph{\bf We cannot avoid clutters when data points become large ($>5000$)} 
